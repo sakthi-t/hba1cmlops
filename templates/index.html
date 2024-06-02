@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>HBA1C Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">HBA1C Prediction</h1>
+    <p>Select Patient ID, Visited Date, and Sugar value to predict HBA1C.</p>
+    <div class="alert alert-info" role="alert">
+        Choose sugar levels between 50 and 600. HBA1C levels are influenced by sugar values: higher sugar typically results in higher HBA1C. This machine learning project uses synthetic data and is not a definitive method to determine HBA1C levels. For accurate results, please select a date within 2024. The dataset contains dates from 2023 to April 2024. Patient names are fictional. Users can only select from existing patient IDs, and there is no correlation between User ID and sugar levels.
+    </div>
+    <form method="post">
+        <div class="form-group">
+            <label for="patient_id">Patient ID</label>
+            <select class="form-control" id="patient_id" name="patient_id" required>
+                {% for patient_id in patient_ids %}
+                <option value="{{ patient_id }}">{{ patient_id }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="visited_date">Visited Date</label>
+            <input type="date" class="form-control" id="visited_date" name="visited_date" required min="2023-01-01" max="2024-04-30">
+        </div>
+        <div class="form-group">
+            <label for="sugar">Sugar</label>
+            <input type="number" class="form-control" id="sugar" name="sugar" required min="50" max="600" step="0.1">
+        </div>
+        <button type="submit" class="btn btn-primary">Predict HBA1C</button>
+    </form>
+    {% if prediction is not none %}
+    <div class="alert alert-success mt-4" role="alert">
+        Predicted HBA1C: {{ prediction }}
+    </div>
+    {% endif %}
+    <p>Data versioned with DVC. Model pipelines built using Metaflow. Experiments tracked in MLflow. Model stored in DagsHub. Dockerized and deployed with CI/CD via GitHub Actions.</p>
+</div>
+</body>
+</html>

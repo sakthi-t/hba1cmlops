@@ -1,0 +1,1 @@
+{"flow_id": "RegressionFlow", "run_number": "1717349498952707", "step_name": "elasticnet_param", "task_id": "6", "field_name": "ds-root", "type": "ds-root", "value": "/home/sakthi/hba1cmlops/.metaflow", "tags": ["attempt_id:0"], "user_name": "sakthi", "ts_epoch": 1717349518745}

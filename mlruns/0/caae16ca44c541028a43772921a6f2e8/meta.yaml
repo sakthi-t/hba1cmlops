@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sakthi/hba1cmlops/mlruns/0/caae16ca44c541028a43772921a6f2e8/artifacts
+end_time: 1717349822102
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: caae16ca44c541028a43772921a6f2e8
+run_name: angry-foal-259
+run_uuid: caae16ca44c541028a43772921a6f2e8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717349822071
+status: 3
+tags: []
+user_id: sakthi

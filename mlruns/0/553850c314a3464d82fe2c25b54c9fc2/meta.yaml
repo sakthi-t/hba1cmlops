@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sakthi/hba1cmlops/mlruns/0/553850c314a3464d82fe2c25b54c9fc2/artifacts
+end_time: 1717349647400
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 553850c314a3464d82fe2c25b54c9fc2
+run_name: popular-kite-760
+run_uuid: 553850c314a3464d82fe2c25b54c9fc2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717349647368
+status: 3
+tags: []
+user_id: sakthi

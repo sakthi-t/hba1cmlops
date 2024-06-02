@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sakthi/hba1cmlops/mlruns/0/cfb8b8d2270d4721bc4141b67ece544e/artifacts
+end_time: 1717349678324
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cfb8b8d2270d4721bc4141b67ece544e
+run_name: redolent-yak-821
+run_uuid: cfb8b8d2270d4721bc4141b67ece544e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717349672788
+status: 3
+tags: []
+user_id: sakthi

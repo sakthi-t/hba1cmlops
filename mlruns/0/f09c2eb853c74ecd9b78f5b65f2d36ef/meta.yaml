@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sakthi/hba1cmlops/mlruns/0/f09c2eb853c74ecd9b78f5b65f2d36ef/artifacts
+end_time: 1717349660206
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f09c2eb853c74ecd9b78f5b65f2d36ef
+run_name: angry-lamb-240
+run_uuid: f09c2eb853c74ecd9b78f5b65f2d36ef
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717349660179
+status: 3
+tags: []
+user_id: sakthi

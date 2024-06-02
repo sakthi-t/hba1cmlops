@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1717349677617
+current_stage: None
+description: null
+last_updated_timestamp: 1717349677617
+name: random_forest_model
+run_id: cfb8b8d2270d4721bc4141b67ece544e
+run_link: null
+source: file:///home/sakthi/hba1cmlops/mlruns/0/cfb8b8d2270d4721bc4141b67ece544e/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///home/sakthi/hba1cmlops/mlruns/0/cfb8b8d2270d4721bc4141b67ece544e/artifacts/model
+user_id: null
+version: 1
