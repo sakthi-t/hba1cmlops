@@ -11,6 +11,8 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
+from evidently.report import Report
+from evidently.metric_preset import DataDriftPreset, RegressionPreset
 
 class RegressionFlow(FlowSpec):
 
@@ -54,6 +56,12 @@ class RegressionFlow(FlowSpec):
 
         # Dropping the original visited date column
         self.data = self.data.drop(columns=['visited_date'])
+
+
+        # Split data into reference and current datasets
+        self.reference_data = self.data.sample(n=1000, replace=False)
+        self.current_data = self.data.drop(self.reference_data.index)
+        
         self.next(self.define_features_target)
 
     @step
@@ -102,13 +110,42 @@ class RegressionFlow(FlowSpec):
         mlflow.log_metric("rmse_rf", self.rmse_rf)
         mlflow.log_metric("mae_rf", self.mae_rf)
         mlflow.log_metric("r2_rf", self.r2_rf)
+
+        self.next(self.generate_reports)
+
+    @step
+    def generate_reports(self):
+
+        # Add predictions to the reference and current datasets
+        self.reference_data['prediction'] = self.model_rf.predict(self.reference_data.drop(columns=['hba1c']))
+        self.current_data['prediction'] = self.model_rf.predict(self.current_data.drop(columns=['hba1c']))
+
+        # Rename the 'hba1c' column to 'target' as required by Evidently metrics
+        self.reference_data.rename(columns={'hba1c': 'target'}, inplace=True)
+        self.current_data.rename(columns={'hba1c': 'target'}, inplace=True)
+
+        
+        # Evidently AI monitoring and reports
+        # Data Drift Report
+        drift_report = Report(metrics=[DataDriftPreset()])
+        drift_report.run(reference_data=self.reference_data, current_data=self.current_data)
+        drift_report.save_html("data_drift_report.html")
+        
+        # Regression Performance Report
+        reg_report = Report(metrics=[RegressionPreset()])
+        reg_report.run(reference_data=self.reference_data, current_data=self.current_data)
+        reg_report.save_html("regression_performance_report.html")
+
+        # Log reports to MLflow
+        mlflow.log_artifact("data_drift_report.html")
+        mlflow.log_artifact("regression_performance_report.html")
+
         self.next(self.end)
+        
     
     @step
     def end(self):
         
-
-
         print(f"RandomForest - RMSE: {self.rmse_rf}, MAE: {self.mae_rf}, R2: {self.r2_rf}")
         mlflow.end_run()
 
