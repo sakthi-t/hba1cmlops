@@ -18,7 +18,7 @@ mlflow.set_tracking_uri("https://dagshub.com/sakthi-t/hba1cmlops.mlflow")
 
 # Load the model from MLflow model registry
 model_name = "random_forest_model"
-model_version = 1
+model_version = 3
 model_uri = f"models:/{model_name}/{model_version}"
 loaded_model = mlflow.sklearn.load_model(model_uri)
 
