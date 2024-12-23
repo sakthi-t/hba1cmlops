@@ -53,6 +53,15 @@ jobs:
 #      # Check-out your repository.
       - name: Checkout
         uses: actions/checkout@v2
+        
+	
+        
+	# install heroku cli
+      - name: Install Heroku CLI
+        run: |
+            curl https://cli-assests.heroku.com/install.sh | sh
+        
+		
 
 
 ### ⬇ IMPORTANT PART ⬇ ###
